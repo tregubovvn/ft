@@ -347,7 +347,7 @@
         function renderSymbols(symbols) {
             if (!symbols || symbols.length === 0) { elements.symbolsContainer.style.display = 'none'; elements.symbolsContainer.innerHTML = ''; return; }
             elements.symbolsContainer.style.display = 'block'; let html = '<p class="symbols-title">Условные обозначения</p>';
-            symbols.forEach(s => { html += `<div class="symbol-item"><div class="symbol-char">${renderLatexInline(s.char)}</div><div class="symbol-dash">—</div><div class="symbol-name">${renderLatexInline(s.name)}</div></div>`; });
+            symbols.forEach(s => { html += `<div class="symbol-item"><div class="symbol-char">${renderLatexInline(s.char)}</div><div class="symbol-dash">—</div><div class="symbol-name">${(s.name)}</div></div>`; });
             elements.symbolsContainer.innerHTML = html;
         }
 
@@ -575,6 +575,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -566,7 +566,7 @@
         function parseUrlParams() {
             const params = new URLSearchParams(window.location.search);
             const formulaParam = params.get('formula'); if (formulaParam) { const name = params.get('name') || 'Формула'; formulas.push({ name, latex: decodeURIComponent(formulaParam), symbols: [] }); updateStartButton(); }
-            const fileUrl = params.get('file'); if (fileUrl) { loadFromUrl(decodeURIComponent(fileUrl)); }
+            const fileUrl = params.get('file'); if (fileUrl) { urlInput.value = decodeURIComponent(fileUrl); }
             const formUrl = params.get('form_url'); if (formUrl) { resultFormUrl = decodeURIComponent(formUrl); }
         }
 
@@ -575,4 +575,5 @@
     </script>
 </body>
 </html>
+
 

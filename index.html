@@ -507,7 +507,7 @@
 
                 } else {
                     // --- ЛОГИКА ДЛЯ ДРУГИХ URL (через прокси) ---
-                    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+                    const proxyUrl = url;
                     const response = await fetch(proxyUrl);
                     if (!response.ok) throw new Error('Ошибка загрузки по ссылке');
                     xmlContent = await response.text();
@@ -575,3 +575,4 @@
     </script>
 </body>
 </html>
+

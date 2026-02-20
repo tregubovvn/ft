@@ -1,5 +1,5 @@
 # Formula Builder
-https://tregubovvn.github.io/ft/index.html?file=https://tregubovvn.github.io/ft/op/test1.xml 
+https://tregubovvn.github.io/ft/index.html?file=https://tregubovvn.github.io/ft/op/t2.xml 
 
 **Formula Builder** — это интерактивное HTML-приложение для проверки знаний математических и физических формул. Приложение позволяет студентам собирать формулы из фрагментов, загружать задания из внешних источников и автоматически отправлять результаты тестирования.
 

@@ -1,4 +1,7 @@
 # Formula Builder
+
+https://tregubovvn.github.io/ft/editor/index.html 
+
 https://tregubovvn.github.io/ft/index.html?file=https://tregubovvn.github.io/ft/op/t2.xml 
 
 https://tregubovvn.github.io/ft/index.html?file=https://tregubovvn.github.io/ft/excel/test1.xml 

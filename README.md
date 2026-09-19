@@ -6,6 +6,8 @@ https://tregubovvn.github.io/ft/index.html?file=https://tregubovvn.github.io/ft/
 
 https://tregubovvn.github.io/ft/index.html?file=https://tregubovvn.github.io/ft/excel/test1.xml 
 
+## Промпт для создания заданий
+https://gist.github.com/tregubovvn/e32e6561ac50b1866e5cb9de2a238f68 
 
 
 

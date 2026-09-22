@@ -115,6 +115,12 @@
                         <div><label class="block text-sm font-medium mb-2" style="color: var(--muted)">ФИО</label><input type="text" id="lastName" class="input-field" placeholder="Иванов"></div>
                         <div><label class="block text-sm font-medium mb-2" style="color: var(--muted)">Группа</label><input type="text" id="firstName" class="input-field" placeholder="МЕНЖ" Value= "МЕНЖ"></div>
                     </div>
+
+                    <div>
+                        <button id="startBtn" class="btn btn-primary w-full text-lg" disabled>Начать тест<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button>
+                        <div id="validationMessage" class="validation-message"></div>
+                    </div>
+                    
                     <div class="pt-4 border-t" style="border-color: var(--border)">
                         <p class="text-sm font-medium mb-3" style="color: var(--muted)">Загрузить формулы</p>
                         <div class="space-y-3">
@@ -137,10 +143,7 @@
                         </div>
                     </div>
                     <div id="formulasStatus" class="hidden p-3 rounded-lg" style="background: var(--accent-dim)"><p class="text-sm text-center">Загружено формул: <span id="formulasCount" class="font-bold">0</span></p></div>
-                    <div>
-                        <button id="startBtn" class="btn btn-primary w-full text-lg" disabled>Начать тест<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></button>
-                        <div id="validationMessage" class="validation-message"></div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -365,11 +368,11 @@
         }
 
         function resetDropZone() { elements.dropZone.innerHTML = '<p class="hint-text">Перетащите фрагменты сюда в правильном порядке</p>'; elements.dropZone.classList.remove('has-items'); placedFragments = []; updateCheckButton(); }
-        function updateCheckButton() { elements.checkBtn.disabled = placedFragments.length !== currentFragments.length; elements.checkBtnNext.disabled = placedFragments.length !== currentFragments.length;}
+        function updateCheckButton() { elements.checkBtn.disabled = placedFragments.length !== currentFragments.length;}
         function updateStartButton() {
             const lastNameVal = elements.lastName.value.trim(); const firstNameVal = elements.firstName.value.trim(); const hasName = lastNameVal && firstNameVal; const hasFormulas = formulas.length > 0;
             elements.startBtn.disabled = !(hasName && hasFormulas);
-            let message = ''; if (!hasFormulas && !hasName) { message = 'Введите имя, фамилию и загрузите формулы'; } else if (!hasName) { message = 'Введите фамилию и имя для начала теста'; } else if (!hasFormulas) { message = 'Загрузите формулы для начала теста'; }
+            let message = ''; if (!hasFormulas && !hasName) { message = 'Введите ФИО и загрузите формулы'; } else if (!hasName) { message = 'Введите ФИО для начала теста'; } else if (!hasFormulas) { message = 'Загрузите формулы для начала теста'; }
             elements.validationMessage.textContent = message; elements.validationMessage.style.opacity = message ? '1' : '0';
         }
         
@@ -590,7 +593,7 @@
         }
 
         // ============ INITIALIZATION ============
-        parseUrlParams(); updateStartButton();
+        parseUrlParams(); updateStartButton(); if (url) loadFromUrl(url);
     </script>
 </body>
 </html>

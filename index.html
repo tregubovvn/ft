@@ -447,7 +447,7 @@
 
         // ============ RESULTS ============
         function showResults() {
-            stopTimer(); const total = formulas.length; const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+            stopTimer(); const total = formulas.length; const percentage = total > 0 ? Math.round((correctCount / total - 0.2 * wrongCount) * 100) : 0;
             
             const studentResult  = percentage >= 85 ? 5 : percentage >= 65 ? 4 : percentage >= 40 ? 3 : 2;
           

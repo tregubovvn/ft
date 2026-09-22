@@ -186,7 +186,7 @@
                 <div class="action-buttons fade-in stagger-4">
                     <button id="resetBtn" class="btn btn-secondary"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>Сбросить</button>
                     <button id="checkBtn" class="btn btn-primary" disabled><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Проверить</button>
-                    <button id="checkBtnNext" class="btn btn-primary" disabled><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5l6 6m0 0l-6 6m6-6H4.5"/></svg>Дальше</button>
+                    <button id="checkBtnNext" class="btn btn-primary" ><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5l6 6m0 0l-6 6m6-6H4.5"/></svg>Дальше</button>
 
                 </div>
             </div>
@@ -204,6 +204,8 @@
                     <div class="stat-card"><p class="stat-value" id="totalFormulas">0</p><p class="text-sm" style="color: var(--muted)">Всего формул</p></div>
                     <div class="stat-card"><p class="stat-value" id="correctAnswers">0</p><p class="text-sm" style="color: var(--muted)">Правильных</p></div>
                     <div class="stat-card"><p class="stat-value" id="wrongAnswers">0</p><p class="text-sm" style="color: var(--muted)">Ошибок</p></div>
+                    <div class="stat-card"><p class="stat-value" id="studentResult">0</p><p class="text-sm" style="color: var(--muted)">Оценка</p></div>
+                
                 </div>
                 <div id="submissionStatus" class="submission-status success" style="display: none;"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Результаты отправлены</div>
                 <div id="resultsDetails" class="text-left mb-8 max-h-64 overflow-y-auto"></div>
@@ -252,7 +254,7 @@
             checkBtnNext: document.getElementById('checkBtnNext'), resultStudentName: document.getElementById('resultStudentName'), resultTime: document.getElementById('resultTime'),
             
             scoreCircle: document.getElementById('scoreCircle'), scoreValue: document.getElementById('scoreValue'), totalFormulas: document.getElementById('totalFormulas'),
-            correctAnswers: document.getElementById('correctAnswers'), wrongAnswers: document.getElementById('wrongAnswers'), resultsDetails: document.getElementById('resultsDetails'),
+            correctAnswers: document.getElementById('correctAnswers'), wrongAnswers: document.getElementById('wrongAnswers'), studentResult: document.getElementById('studentResult'), resultsDetails: document.getElementById('resultsDetails'),
             restartBtn: document.getElementById('restartBtn'), qrModal: document.getElementById('qrModal'), qrVideo: document.getElementById('qrVideo'),
             qrCanvas: document.getElementById('qrCanvas'), qrStatus: document.getElementById('qrStatus'), closeQrBtn: document.getElementById('closeQrBtn'),
             timerDisplay: document.getElementById('timerDisplay'), symbolsContainer: document.getElementById('symbolsContainer'), submissionStatus: document.getElementById('submissionStatus')
@@ -446,8 +448,10 @@
         // ============ RESULTS ============
         function showResults() {
             stopTimer(); const total = formulas.length; const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+            const studentResult  = percent >= 85 ? 5 : percent >= 65 ? 4 : percent >= 40 ? 3 : 2;
+          
             elements.resultStudentName.textContent = `${studentData.lastName} ${studentData.firstName}`; elements.resultTime.textContent = formatTime(totalTestTime);
-            elements.totalFormulas.textContent = total; elements.correctAnswers.textContent = correctCount; elements.wrongAnswers.textContent = wrongCount; elements.scoreValue.textContent = `${percentage}%`; elements.scoreCircle.style.setProperty('--score', percentage);
+            elements.totalFormulas.textContent = total; elements.correctAnswers.textContent = correctCount; elements.wrongAnswers.textContent = wrongCount; elements.studentResult.textContent = studentResult; elements.scoreValue.textContent = `${percentage}%`; elements.scoreCircle.style.setProperty('--score', percentage);
             if (resultFormUrl) { sendResultsToForm(percentage); }
             let detailsHtml = '<div class="space-y-3">';
             results.forEach((r, i) => {

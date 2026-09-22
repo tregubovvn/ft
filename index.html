@@ -448,7 +448,8 @@
         // ============ RESULTS ============
         function showResults() {
             stopTimer(); const total = formulas.length; const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
-            const studentResult  = percent >= 85 ? 5 : percent >= 65 ? 4 : percent >= 40 ? 3 : 2;
+            
+            const studentResult  = percentage >= 85 ? 5 : percentage >= 65 ? 4 : percentage >= 40 ? 3 : 2;
           
             elements.resultStudentName.textContent = `${studentData.lastName} ${studentData.firstName}`; elements.resultTime.textContent = formatTime(totalTestTime);
             elements.totalFormulas.textContent = total; elements.correctAnswers.textContent = correctCount; elements.wrongAnswers.textContent = wrongCount; elements.studentResult.textContent = studentResult; elements.scoreValue.textContent = `${percentage}%`; elements.scoreCircle.style.setProperty('--score', percentage);

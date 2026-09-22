@@ -455,12 +455,17 @@
             elements.totalFormulas.textContent = total; elements.correctAnswers.textContent = correctCount; elements.wrongAnswers.textContent = wrongCount; elements.studentResult.textContent = studentResult; elements.scoreValue.textContent = `${percentage}%`; elements.scoreCircle.style.setProperty('--score', percentage);
             if (resultFormUrl) { sendResultsToForm(percentage); }
             let detailsHtml = '<div class="space-y-3">';
+
+            
+            if (percentage > 60) {
             results.forEach((r, i) => {
                 const icon = r.correct ? '<svg class="inline" width="20" height="20" fill="none" stroke="#10b981" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>' : '<svg class="inline" width="20" height="20" fill="none" stroke="#ef4444" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>';
                 detailsHtml += `<div class="result-formula ${r.correct ? 'correct' : 'incorrect'}"><div class="flex items-center gap-2 mb-2">${icon}<span class="font-medium">${r.name}</span></div><p class="text-sm mb-1" style="color: var(--muted)">Правильный ответ:</p><div class="p-2 rounded" style="background: rgba(0,0,0,0.2)"></div><div id="correctFormula${i}" class="p-2"></div></div>`;
             });
             detailsHtml += '</div>'; elements.resultsDetails.innerHTML = detailsHtml;
             results.forEach((r, i) => { const el = document.getElementById(`correctFormula${i}`); if (el) { renderLatexDisplay(r.latex, el); } });
+            }
+            
             showScreen('result');
         }
 

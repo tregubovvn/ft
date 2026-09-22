@@ -377,7 +377,7 @@
         }
 
         function resetDropZone() { elements.dropZone.innerHTML = '<p class="hint-text">Перетащите фрагменты сюда в правильном порядке</p>'; elements.dropZone.classList.remove('has-items'); placedFragments = []; updateCheckButton(); }
-        function updateCheckButton() { elements.checkBtn.disabled = placedFragments.length !== currentFragments.length;}
+        function updateCheckButton() { elements.checkBtn.disabled = placedFragments.length !== currentFragments.length;  elements.checkBtnNext.disabled = false;}
         function updateStartButton() {
             const lastNameVal = elements.lastName.value.trim(); const firstNameVal = elements.firstName.value.trim(); const hasName = lastNameVal && firstNameVal; const hasFormulas = formulas.length > 0;
             elements.startBtn.disabled = !(hasName && hasFormulas);
@@ -447,7 +447,7 @@
 
         // ============ RESULTS ============
         function showResults() {
-            stopTimer(); const total = formulas.length; const percentage = total > 0 ? Math.round((correctCount / total - 0.2 * wrongCount) * 100) : 0;
+            stopTimer(); const total = formulas.length; const percentage = total > 0 ? Math.round((correctCount / total - 0.03 * wrongCount) * 100) : 0;
             
             const studentResult  = percentage >= 85 ? 5 : percentage >= 65 ? 4 : percentage >= 40 ? 3 : 2;
           

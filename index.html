@@ -425,7 +425,7 @@
             const isCorrect = JSON.stringify(correct) === JSON.stringify(userAnswer);
             //const result = { name: formula.name, latex: formula.latex, correct: isCorrect, userAnswer: userAnswer.join(' '), correctAnswer: correct.join(' ') };
             //results.push(result);
-            if (isCorrect) { showFeedback(true); elements.checkBtnNext.disabled = false; elements.checkBtn.disabled = true;} else { showFeedback(false); elements.checkBtnNext.disabled = true}
+            if (isCorrect) { showFeedback(true); elements.checkBtnNext.disabled = false; elements.checkBtn.disabled = true;} else {wrongCount++; showFeedback(false); elements.checkBtnNext.disabled = true}
             //setTimeout(() => { currentFormulaIndex++; loadCurrentFormula(); }, 1500);
         }
 
@@ -434,7 +434,7 @@
             const isCorrect = JSON.stringify(correct) === JSON.stringify(userAnswer);
             const result = { name: formula.name, latex: formula.latex, correct: isCorrect, userAnswer: userAnswer.join(' '), correctAnswer: correct.join(' ') };
             results.push(result);
-            if (isCorrect) { correctCount++; elements.checkBtnNext.disabled = true; showFeedback(true); } else { wrongCount++; showFeedback(false); }
+            if (isCorrect) { correctCount++; showFeedback(true); } else { wrongCount++; showFeedback(false); }
             setTimeout(() => { currentFormulaIndex++; loadCurrentFormula(); }, 1500);
         }
 
